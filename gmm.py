@@ -46,7 +46,7 @@ class GMM:
     def predict(self, Y):
         labels = []
         for y in Y:
-            l = np.argmax([self.get_normal(self.covs[k], self.means[k], [y]) * self.coeffs[k] for k in range(self.k)])
+            l = np.argmax([self.get_normal(self.covs[k], self.means[k], np.expand_dims(y,axis=0)) * self.coeffs[k] for k in range(self.k)])
             labels.append(l)
         return labels
 
